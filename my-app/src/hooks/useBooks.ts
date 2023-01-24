@@ -1,13 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
-export default function useBooks() {
-    const [books, setBooks] = React.useState(null);
+
+
+export interface BookInterface
+{
+  id: string;
+  title: string;
+}
+
+export function useBooks() {
+    const [books, setBooks] = useState<BookInterface[]>([]);
   
-    React.useEffect(() => {
+
+    useEffect(() => {
       fetch('https://fakerapi.it/api/v1/books?_quantity=3')
-        .then((res) => res.json())
-        .then((res) => setBooks(res.listings));
-    }, []);
+      .then(response => response.json())
+      .then(json => console.log(json))
+      // @ts-ignore
+      .then((response) => setBooks(response))
+      
+    
+      }, []);
   
     return books;
   }

@@ -1,27 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import useBooks from './hooks/useBooks';
+import {useBooks, BookInterface} from './hooks/useBooks';
 import Book from './presentation/Book';
 
 function App() {
 const books = useBooks();
 
-
-const FormatBooks = (books : any) => 
+const FormatBooks = (books : BookInterface[]) : any => 
 {
-  if(books != null && books.length > 0)
-  {
-       return books.map((x: { title: any; }) => <Book title={x.title} />);
-  }
+
+if(books === undefined || books.length === 0)
+{
+  return <div>Empty</div>;
+}
+
+  return books.map((x) => <Book title={x.title} />);
 }
 
 
   return (
     <div className="App">
      
-<FormatBooks books={books} />
-
+ {FormatBooks(books)}
 
     </div>
   );
