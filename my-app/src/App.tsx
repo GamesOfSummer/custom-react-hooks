@@ -14,7 +14,7 @@ if(books === undefined || books.length === 0)
   return <div>Empty</div>;
 }
 
-  return books.map((x : BookInterface) => {return <Book id={x.id} title={x.title} />});
+  return books.map((x : BookInterface) => {return <Book key={x.id} id={x.id} title={x.title} />});
 }
 
 
