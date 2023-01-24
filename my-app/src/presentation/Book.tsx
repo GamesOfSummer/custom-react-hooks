@@ -1,8 +1,9 @@
 import React from 'react';
+import { BookInterface } from '../hooks/useBooks';
 
-const Book = (title:any) =>
+const Book = ({id, title}:BookInterface) =>
 {
- return <div>{title}</div>;
+ return <div key={id}>{title}</div>;
 }
 
 export default Book;

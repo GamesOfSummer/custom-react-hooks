@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
 
-
 export interface BookInterface
 {
   id: string;
@@ -15,9 +14,8 @@ export function useBooks() {
     useEffect(() => {
       fetch('https://fakerapi.it/api/v1/books?_quantity=3')
       .then(response => response.json())
-      .then(json => console.log(json))
-      // @ts-ignore
-      .then((response) => setBooks(response))
+      .then((response) => setBooks(response.data));
+      
       
     
       }, []);
